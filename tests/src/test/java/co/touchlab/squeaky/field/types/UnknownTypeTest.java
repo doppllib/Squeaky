@@ -1,11 +1,16 @@
 package co.touchlab.squeaky.field.types;
 
-import co.touchlab.squeaky.field.DataType;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.field.DataType;
+
 
 import static org.junit.Assert.assertNull;
-
-public class UnknownTypeTest extends BaseTypeTest
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class UnknownTypeTest extends BaseTypeTestHide
 {
 
 	@Test

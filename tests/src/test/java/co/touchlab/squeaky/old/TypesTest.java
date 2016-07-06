@@ -1,13 +1,8 @@
 package co.touchlab.squeaky.old;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.DataType;
-import co.touchlab.squeaky.field.DatabaseField;
-import co.touchlab.squeaky.table.DatabaseTable;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -15,11 +10,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.DataType;
+import co.touchlab.squeaky.field.DatabaseField;
+import co.touchlab.squeaky.table.DatabaseTable;
+
 /**
  * Created by kgalligan on 7/19/15.
  */
-@RunWith(RobolectricTestRunner.class)
-public class TypesTest extends BaseTest
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class TypesTest extends BaseTestHide
 {
 	@Test
 	public void basicDbTest() throws SQLException

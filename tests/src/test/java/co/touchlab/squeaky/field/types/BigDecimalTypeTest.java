@@ -1,25 +1,28 @@
 package co.touchlab.squeaky.field.types;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.DatabaseField;
-import co.touchlab.squeaky.table.DatabaseTable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.DatabaseField;
+import co.touchlab.squeaky.table.DatabaseTable;
 
-@RunWith(RobolectricTestRunner.class)
-public class BigDecimalTypeTest extends BaseTypeTest
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class BigDecimalTypeTest extends BaseTypeTestHide
 {
-
 	private final static String BIGDECIMAL_COLUMN = "bigDecimal";
 	private final static String DEFAULT_VALUE = "1.3452904234234732472343454353453453453453453453453453453";
 	public static final String LOCAL_BIG_DECIMAL = "LocalBigDecimal";

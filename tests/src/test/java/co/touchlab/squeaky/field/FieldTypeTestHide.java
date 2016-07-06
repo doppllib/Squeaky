@@ -1,6 +1,6 @@
 package co.touchlab.squeaky.field;
 
-public class FieldTypeTest /*extends BaseCoreTest */
+public class FieldTypeTestHide /*extends BaseCoreTest */
 {
 
 

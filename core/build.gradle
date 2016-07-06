@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'com.touchlab.doppel.doppelgradle'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile 'junit:junit:4.11'
+}
+
+group = 'doppl.co.touchlab.squeaky'
+version = '0.5.0.0'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId 'squeaky-core'
+            from components.java
+
+            artifact doppelArchive
+        }
+    }
+    repositories {
+        maven {
+            url dopplMavenDeploy
+        }
+    }
+}
+
+j2objcConfig {
+
+    testPattern {
+
+        // Exclude a single test without needing to specify the full path
+        exclude '**/*.java'
+
+    }
+
+    extraObjcCompilerArgs '-Wno-deprecated'
+    extraLinkerArgs '-lsqlite3'
+
+    testMinExpectedTests 0
+
+    finalConfigure()          // Must be last call to configuration
+}

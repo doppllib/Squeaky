@@ -1,20 +1,20 @@
 package co.touchlab.squeaky.field;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.types.BaseTypeTest;
-import co.touchlab.squeaky.stmt.Where;
-import co.touchlab.squeaky.table.DatabaseTable;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
+
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.types.BaseTypeTestHide;
+import co.touchlab.squeaky.stmt.Where;
+import co.touchlab.squeaky.table.DatabaseTable;
 
 
 import static org.junit.Assert.assertEquals;
@@ -22,8 +22,9 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by kgalligan on 7/26/15.
  */
-@RunWith(RobolectricTestRunner.class)
-public class ForeignFieldTest extends BaseTypeTest
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class ForeignFieldTest extends BaseTypeTestHide
 {
 	public static final String PREFIX = "Hello ";
 	private SimpleHelper helper;
@@ -139,101 +140,6 @@ public class ForeignFieldTest extends BaseTypeTest
 		}
 	}
 
-	@Test
-	public void testForeignStringCollection() throws Exception
-	{
-		Dao<StringParent> parentDao = helper.getDao(StringParent.class);
-
-		StringParent parent = new StringParent();
-		parent.id = UUID.randomUUID().toString();
-		parent.name = "test";
-		parentDao.create(parent);
-
-		Dao<StringChild> childDao = helper.getDao(StringChild.class);
-		Random random = new Random();
-		List<StringChild> children = new ArrayList<StringChild>();
-
-		for (int i = 0; i < 20; i++)
-		{
-			StringChild child = new StringChild();
-			child.asdf = PREFIX + random.nextInt(10000);
-			child.stringParent = parent;
-			childDao.create(child);
-			children.add(child);
-		}
-
-		List<String> statements = new ArrayList<>();
-
-		{
-			Where<StringChild> where = new Where<>(childDao);
-			Where<StringChild> subwhere = where.eq("stringparent", parent);
-			statements.add(subwhere.getWhereStatement(true));
-			List<StringChild> childList = childDao.query(subwhere).list();
-			assertEquals(childList.size(), 20);
-		}
-
-		{
-			Where<StringChild> where = new Where<>(childDao);
-			Where<StringChild> subwhere = where.eq("stringparent_id", parent.id);
-			statements.add(subwhere.getWhereStatement(true));
-			List<StringChild> childList = childDao.query(subwhere).list();
-			assertEquals(childList.size(), 20);
-		}
-
-		{
-			Where<StringChild> where = new Where<>(childDao);
-			Where<StringChild> subwhere = where.eq("stringparent_id", parent);
-			statements.add(subwhere.getWhereStatement(true));
-			List<StringChild> childList = childDao.query(subwhere).list();
-			assertEquals(childList.size(), 20);
-		}
-
-		{
-			Where<StringChild> where = new Where<>(childDao);
-			Where<StringChild> subwhere = where.eq("stringparent", parent.id);
-			statements.add(subwhere.getWhereStatement(true));
-			List<StringChild> childList = childDao.query(subwhere).list();
-			assertEquals(childList.size(), 20);
-		}
-
-		String check = null;
-		for (String statement : statements)
-		{
-			if (check == null)
-			{
-				check = statement == null ? "whoops" : statement;
-			}
-			else
-			{
-				assertEquals(check, statement);
-			}
-		}
-	}
-
-	@DatabaseTable
-	protected static class StringParent
-	{
-		@DatabaseField(id = true, dataType = DataType.STRING)
-		String id;
-
-		@DatabaseField
-		String name;
-	}
-
-	@DatabaseTable
-	protected static class StringChild
-	{
-		@DatabaseField(generatedId = true)
-		int id;
-
-		@DatabaseField
-		String asdf;
-
-
-		@DatabaseField(foreign = true)
-		StringParent stringParent;
-	}
-
 	@DatabaseTable
 	protected static class Parent
 	{
@@ -275,9 +181,7 @@ public class ForeignFieldTest extends BaseTypeTest
 		return createHelper(
 				Child.class,
 				ChildEager.class,
-				Parent.class,
-				StringChild.class,
-				StringParent.class
+				Parent.class
 		);
 	}
 }

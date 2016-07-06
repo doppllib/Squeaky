@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: "net.ltgt.apt"
+apply plugin: 'com.touchlab.doppel.doppelgradle'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'junit:junit:4.11'
+
+    compile 'co.touchlab.squeaky:squeaky-core:0.5.0.0'
+    doppel 'doppl.co.touchlab.squeaky:squeaky-core:0.5.0.0@dop'
+
+    compile 'co.touchlab.squeaky:squeaky-query:0.5.0.0'
+    doppel 'doppl.co.touchlab.squeaky:squeaky-query:0.5.0.0@dop'
+
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    doppel 'doppl.org.apache.commons:commons-lang3:3.3.2@dop'
+
+    compile 'co.touchlab.doppel:androidbasetest:0.1.0-SNAPSHOT'
+    testApt 'co.touchlab.squeaky:squeaky-processor:0.5.0.0'
+    testApt 'co.touchlab.doppel:testapt:0.2.1-SNAPSHOT'
+}
+
+j2objcConfig {
+
+
+    extraLinkerArgs '-lsqlite3'
+extraObjcCompilerArgs '-Wno-deprecated'
+    testMinExpectedTests 127
+
+    xcodeTestProjectDir '../ios'  //  suggested directory name
+    xcodeTestTargetsIos 'ios', 'iosTests'  // replace with your iOS targets
+
+    finalConfigure()          // Must be last call to configuration
+}

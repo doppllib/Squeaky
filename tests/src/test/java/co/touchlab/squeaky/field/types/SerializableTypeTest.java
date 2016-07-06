@@ -1,25 +1,27 @@
 package co.touchlab.squeaky.field.types;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.DataType;
-import co.touchlab.squeaky.field.DatabaseField;
-import co.touchlab.squeaky.field.SqlType;
-import co.touchlab.squeaky.table.DatabaseTable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.sql.SQLException;
 
-import static org.junit.Assert.assertTrue;
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.DataType;
+import co.touchlab.squeaky.field.DatabaseField;
+import co.touchlab.squeaky.field.SqlType;
+import co.touchlab.squeaky.table.DatabaseTable;
 
-@RunWith(RobolectricTestRunner.class)
-public class SerializableTypeTest extends BaseTypeTest
+
+import static org.junit.Assert.assertTrue;
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class SerializableTypeTest extends BaseTypeTestHide
 {
 
 	private static final String SERIALIZABLE_COLUMN = "serializable";

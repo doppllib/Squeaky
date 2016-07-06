@@ -1,23 +1,24 @@
 package co.touchlab.squeaky.field.types;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import java.util.List;
+
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.field.DatabaseField;
 import co.touchlab.squeaky.field.SqlType;
 import co.touchlab.squeaky.table.DatabaseTable;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-
-@RunWith(RobolectricTestRunner.class)
-public class BooleanTypeTest extends BaseTypeTest
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class BooleanTypeTest extends BaseTypeTestHide
 {
 
 	private static final String BOOLEAN_COLUMN = "bool";

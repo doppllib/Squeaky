@@ -1,22 +1,24 @@
 package co.touchlab.squeaky.field.types;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.DatabaseField;
-import co.touchlab.squeaky.table.DatabaseTable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import static org.junit.Assert.assertTrue;
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.DatabaseField;
+import co.touchlab.squeaky.table.DatabaseTable;
 
-@RunWith(RobolectricTestRunner.class)
-public class DateTypeTest extends BaseTypeTest
+
+import static org.junit.Assert.assertTrue;
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class DateTypeTest extends BaseTypeTestHide
 {
 
 	private static final String DATE_COLUMN = "date";

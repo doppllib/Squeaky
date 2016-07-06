@@ -1,46 +1,33 @@
-package co.touchlab.squeaky.field.types;
+package co.touchlab.squeaky.old;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.sql.SQLException;
+
+import co.touchlab.squeaky.SuperBaseTestHide;
 import co.touchlab.squeaky.db.sqlite.SQLiteDatabaseImpl;
 import co.touchlab.squeaky.db.sqlite.SqueakyOpenHelper;
 import co.touchlab.squeaky.table.TableUtils;
-import org.robolectric.RuntimeEnvironment;
 
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
-
-public abstract class BaseTypeTest
+/**
+ * Created by kgalligan on 7/19/15.
+ */
+public class BaseTestHide extends SuperBaseTestHide
 {
-
-	public SimpleHelper createHelper(Class... c)
+	SimpleHelper createHelper(Class... c)
 	{
-		return new SimpleHelper(RuntimeEnvironment.application, getClass().getSimpleName() + ".db", c);
-	}
-
-	public SimpleHelper createViewHelper(String viewSql, Class... c)
-	{
-		return new SimpleHelper(RuntimeEnvironment.application, Collections.singletonList(viewSql), getClass().getSimpleName() + ".db", c);
+		return new SimpleHelper(getApp(), getClass().getSimpleName() + ".db", c);
 	}
 
 	public static class SimpleHelper extends SqueakyOpenHelper
 	{
-		private final Class[] managingClasses;
-		private List<String> createSqlList;
+		Class[] managingClasses;
 
 		public SimpleHelper(Context context, String name, Class... managingClasses)
 		{
 			super(context, name, null, 1);
 			this.managingClasses = managingClasses;
-		}
-
-		public SimpleHelper(Context context, List<String> createSqlList, String name, Class... managingClasses)
-		{
-
-			super(context, name, null, 1);
-			this.managingClasses = managingClasses;
-			this.createSqlList = createSqlList;
 		}
 
 		@Override
@@ -49,13 +36,6 @@ public abstract class BaseTypeTest
 			try
 			{
 				TableUtils.createTables(new SQLiteDatabaseImpl(sqLiteDatabase), managingClasses);
-				if (createSqlList != null)
-				{
-					for (String s : createSqlList)
-					{
-						sqLiteDatabase.execSQL(s);
-					}
-				}
 			}
 			catch (SQLException e)
 			{
@@ -74,7 +54,6 @@ public abstract class BaseTypeTest
 			}
 			try
 			{
-
 				TableUtils.dropTables(new SQLiteDatabaseImpl(sqLiteDatabase), true, reversed);
 			}
 			catch (SQLException e)

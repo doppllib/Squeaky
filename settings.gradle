@@ -1,0 +1,3 @@
+include ':core', ':query', ':tests'
+project(":core").name = 'squeaky-core'
+project(":query").name = 'squeaky-query'

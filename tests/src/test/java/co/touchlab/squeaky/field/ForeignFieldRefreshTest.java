@@ -1,26 +1,29 @@
 package co.touchlab.squeaky.field;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.dao.DaoHelper;
-import co.touchlab.squeaky.field.types.BaseTypeTest;
-import co.touchlab.squeaky.stmt.Where;
-import co.touchlab.squeaky.table.DatabaseTable;
+import com.google.j2objc.annotations.Weak;
+import com.google.j2objc.annotations.WeakOuter;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.sql.SQLException;
 
-import static org.junit.Assert.assertEquals;
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.dao.DaoHelper;
+import co.touchlab.squeaky.field.types.BaseTypeTestHide;
+import co.touchlab.squeaky.stmt.Where;
+import co.touchlab.squeaky.table.DatabaseTable;
 
 /**
  * Created by kgalligan on 7/26/15.
  */
-@RunWith(RobolectricTestRunner.class)
-public class ForeignFieldRefreshTest extends BaseTypeTest
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class ForeignFieldRefreshTest extends BaseTypeTestHide
 {
 	public static final String PREFIX = "Hello ";
 	private SimpleHelper helper;
@@ -181,6 +184,7 @@ public class ForeignFieldRefreshTest extends BaseTypeTest
 		String name;
 
 		@DatabaseField(foreign = true, foreignAutoRefresh = true)
+		@Weak
 		ChildEager childEager;
 	}
 

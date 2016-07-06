@@ -1,6 +1,6 @@
 package co.touchlab.squeaky.field;
 
-public class DataPersisterManagerTest /*extends BaseCoreTest */
+public class DataPersisterManagerTestHide /*extends BaseCoreTest */
 {
 
 	/*@Test(expected = IllegalArgumentException.class)

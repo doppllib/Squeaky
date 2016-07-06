@@ -2,34 +2,37 @@ package co.touchlab.squeaky.old;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
+
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.SuperBaseTestHide;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.db.sqlite.SQLiteDatabaseImpl;
 import co.touchlab.squeaky.db.sqlite.SqueakyOpenHelper;
 import co.touchlab.squeaky.field.DatabaseField;
 import co.touchlab.squeaky.table.DatabaseTable;
 import co.touchlab.squeaky.table.TableUtils;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by kgalligan on 7/18/15.
  */
-@RunWith(RobolectricTestRunner.class)
-public class BasicEntityTests
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class BasicEntityTests extends SuperBaseTestHide
 {
 	@Test
 	public void basicDbTest() throws SQLException
 	{
-		System.out.println(RuntimeEnvironment.application.getDatabasePath(OpenHelper.NAME));
+		System.out.println(getApp().getDatabasePath(OpenHelper.NAME));
 
-		OpenHelper openHelper = new OpenHelper(RuntimeEnvironment.application);
+		OpenHelper openHelper = new OpenHelper(getApp());
 		{
 			Dao<A> dao = openHelper.getDao(A.class);
 			A a = new A();

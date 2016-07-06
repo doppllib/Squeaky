@@ -1,24 +1,28 @@
 package co.touchlab.squeaky.field.types;
 
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.DatabaseField;
-import co.touchlab.squeaky.field.SqlType;
-import co.touchlab.squeaky.table.DatabaseTable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.DatabaseField;
+import co.touchlab.squeaky.field.SqlType;
+import co.touchlab.squeaky.table.DatabaseTable;
 
-@RunWith(RobolectricTestRunner.class)
-public class BigIntegerTypeTest extends BaseTypeTest
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+@DoppelTest
+@RunWith(DoppelRobolectricTestRunner.class)
+public class BigIntegerTypeTest extends BaseTypeTestHide
 {
 
 	private final static String BIGINTEGER_COLUMN = "bigInteger";
