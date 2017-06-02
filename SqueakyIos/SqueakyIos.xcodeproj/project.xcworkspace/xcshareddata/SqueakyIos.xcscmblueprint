@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "891136BE8797EE072FEAA411192749F86904420D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "891136BE8797EE072FEAA411192749F86904420D" : 9223372036854775807,
+    "44D221F7591175A4A445187FEA95357B21A925E5" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "71600FF9-51EB-48E1-A762-D515BC5E852A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "891136BE8797EE072FEAA411192749F86904420D" : "Squeaky-doppl\/",
+    "44D221F7591175A4A445187FEA95357B21A925E5" : "..\/devel\/j2objc"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SqueakyIos",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SqueakyIos\/SqueakyIos.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:google\/j2objc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "44D221F7591175A4A445187FEA95357B21A925E5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/doppllib\/Squeaky-doppl.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "891136BE8797EE072FEAA411192749F86904420D"
+    }
+  ]
+}

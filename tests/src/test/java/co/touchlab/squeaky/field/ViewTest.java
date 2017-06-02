@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.field.types.BaseTypeTestHide;
 import co.touchlab.squeaky.table.DatabaseTable;
@@ -19,8 +20,8 @@ import co.touchlab.squeaky.table.DatabaseView;
 /**
  * Created by kgalligan on 7/26/15.
  */
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class ViewTest extends BaseTypeTestHide
 {
 	private SimpleHelper helper;

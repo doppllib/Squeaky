@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
 import co.touchlab.squeaky.SuperBaseTestHide;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.db.sqlite.SQLiteDatabaseImpl;
@@ -23,8 +24,8 @@ import co.touchlab.squeaky.table.TableUtils;
 /**
  * Created by kgalligan on 7/18/15.
  */
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class BasicEntityTests extends SuperBaseTestHide
 {
 	@Test

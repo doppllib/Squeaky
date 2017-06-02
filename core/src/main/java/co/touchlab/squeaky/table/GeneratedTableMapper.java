@@ -1,6 +1,9 @@
 package co.touchlab.squeaky.table;
 
 import android.database.Cursor;
+
+import com.google.j2objc.annotations.ReflectionSupport;
+
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.dao.ModelDao;
 import co.touchlab.squeaky.db.SQLiteStatement;
@@ -10,6 +13,7 @@ import java.sql.SQLException;
 /**
  * Created by kgalligan on 5/24/15.
  */
+@ReflectionSupport(ReflectionSupport.Level.FULL)
 public interface GeneratedTableMapper<T>
 {
 	T createObject(Cursor results) throws SQLException;

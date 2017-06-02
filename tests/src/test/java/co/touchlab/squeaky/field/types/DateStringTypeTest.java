@@ -11,7 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.field.DataType;
 import co.touchlab.squeaky.field.DatabaseField;
@@ -22,8 +23,8 @@ import co.touchlab.squeaky.table.DatabaseTable;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class DateStringTypeTest extends BaseTypeTestHide
 {
 

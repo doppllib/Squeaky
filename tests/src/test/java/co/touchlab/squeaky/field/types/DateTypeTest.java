@@ -9,15 +9,16 @@ import org.junit.runner.RunWith;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.field.DatabaseField;
 import co.touchlab.squeaky.table.DatabaseTable;
 
 
 import static org.junit.Assert.assertTrue;
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class DateTypeTest extends BaseTypeTestHide
 {
 

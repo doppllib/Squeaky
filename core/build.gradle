@@ -1,46 +1,24 @@
 apply plugin: 'java'
+apply plugin: 'co.doppl.gradle'
 apply plugin: 'maven-publish'
-apply plugin: 'com.touchlab.doppel.doppelgradle'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+def dopplCoreVersion = '0.7.1'
+
 dependencies {
     compile 'junit:junit:4.11'
+    doppl "co.doppl.lib:androidbase:$dopplCoreVersion:doppl"
+    provided "co.doppl.lib:androidbase:$dopplCoreVersion"
 }
 
-group = 'doppl.co.touchlab.squeaky'
+group = 'co.touchlab.squeaky'
 version = '0.5.0.0'
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId 'squeaky-core'
-            from components.java
+ext.bintrayGitUrl = 'https://github.com/doppllib/Squeaky-doppl.git'
+ext.artifactId = 'squeaky-core'
+ext.bintrayName = 'squeaky-core'
 
-            artifact doppelArchive
-        }
-    }
-    repositories {
-        maven {
-            url dopplMavenDeploy
-        }
-    }
-}
-
-j2objcConfig {
-
-    testPattern {
-
-        // Exclude a single test without needing to specify the full path
-        exclude '**/*.java'
-
-    }
-
-    extraObjcCompilerArgs '-Wno-deprecated'
-    extraLinkerArgs '-lsqlite3'
-
-    testMinExpectedTests 0
-
-    finalConfigure()          // Must be last call to configuration
-}
+apply from: "$dopplSharedScriptHome/doppllibpublish.gradle"
+apply from: "$dopplSharedScriptHome/bintray.gradle"

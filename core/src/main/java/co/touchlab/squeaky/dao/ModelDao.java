@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.text.TextUtils;
+
+import com.google.j2objc.annotations.WeakOuter;
+
 import co.touchlab.squeaky.Config;
 import co.touchlab.squeaky.db.SQLiteStatement;
 import co.touchlab.squeaky.db.SQLiteDatabase;
@@ -36,7 +39,13 @@ public class ModelDao<T> implements Dao<T>
 	private final SqueakyContext squeakyContext;
 	private final FieldType idFieldType;
 	private final List<SQLiteStatement> statementList = Collections.synchronizedList(new ArrayList<SQLiteStatement>());
-	private ThreadLocal<SQLiteStatement> createStatement = new ThreadLocal<SQLiteStatement>(){
+	private ThreadLocal<SQLiteStatement> createStatement = new CreateThreadLocal();
+
+	private ThreadLocal<SQLiteStatement> updateStatement = new UpdateThreadLocal();
+
+	@WeakOuter
+	class CreateThreadLocal extends ThreadLocal<SQLiteStatement>
+	{
 		@Override
 		protected SQLiteStatement initialValue()
 		{
@@ -44,8 +53,11 @@ public class ModelDao<T> implements Dao<T>
 			statementList.add(sqLiteStatement);
 			return sqLiteStatement;
 		}
-	};
-	private ThreadLocal<SQLiteStatement> updateStatement = new ThreadLocal<SQLiteStatement>(){
+	}
+
+	@WeakOuter
+	class UpdateThreadLocal extends ThreadLocal<SQLiteStatement>
+	{
 		@Override
 		protected SQLiteStatement initialValue()
 		{
@@ -53,7 +65,7 @@ public class ModelDao<T> implements Dao<T>
 			statementList.add(sqLiteStatement);
 			return sqLiteStatement;
 		}
-	};
+	}
 
 	protected ModelDao(SqueakyContext openHelper, Class<T> entityClass, GeneratedTableMapper<T> generatedTableMapper)
 	{

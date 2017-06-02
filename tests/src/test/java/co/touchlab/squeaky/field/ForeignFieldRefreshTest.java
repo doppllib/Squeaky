@@ -1,7 +1,6 @@
 package co.touchlab.squeaky.field;
 
 import com.google.j2objc.annotations.Weak;
-import com.google.j2objc.annotations.WeakOuter;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -11,7 +10,8 @@ import org.junit.runner.RunWith;
 
 import java.sql.SQLException;
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.dao.DaoHelper;
 import co.touchlab.squeaky.field.types.BaseTypeTestHide;
@@ -21,8 +21,8 @@ import co.touchlab.squeaky.table.DatabaseTable;
 /**
  * Created by kgalligan on 7/26/15.
  */
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class ForeignFieldRefreshTest extends BaseTypeTestHide
 {
 	public static final String PREFIX = "Hello ";

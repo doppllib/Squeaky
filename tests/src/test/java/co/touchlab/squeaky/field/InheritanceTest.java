@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 
 import java.util.Date;
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
 import co.touchlab.squeaky.dao.Dao;
 import co.touchlab.squeaky.field.types.BaseTypeTestHide;
 import co.touchlab.squeaky.table.DatabaseTable;
@@ -17,8 +18,8 @@ import co.touchlab.squeaky.table.DatabaseTable;
 /**
  * Created by kgalligan on 8/8/15.
  */
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class InheritanceTest extends BaseTypeTestHide
 {
 	private SimpleHelper helper;

@@ -1,5 +1,7 @@
 package co.touchlab.squeaky.dao;
 
+import com.google.j2objc.annotations.Weak;
+
 import co.touchlab.squeaky.db.SQLiteDatabase;
 import co.touchlab.squeaky.db.SQLiteOpenHelper;
 import co.touchlab.squeaky.field.FieldType;
@@ -16,6 +18,7 @@ import java.util.Map;
  */
 public class SqueakyContext
 {
+	@Weak
 	private final SQLiteOpenHelper helper;
 	private final Map<Class, ModelDao> daoMap = new HashMap<Class, ModelDao>();
 	private final Map<Class, GeneratedTableMapper> generatedTableMapperMap = new HashMap<Class, GeneratedTableMapper>();

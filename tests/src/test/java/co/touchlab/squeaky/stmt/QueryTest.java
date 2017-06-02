@@ -1,26 +1,28 @@
 package co.touchlab.squeaky.stmt;
 
 
-import co.touchlab.doppel.testing.DoppelTest;import co.touchlab.doppel.testing.DoppelRobolectricTestRunner;
-import co.touchlab.squeaky.dao.Dao;
-import co.touchlab.squeaky.field.DataType;
-import co.touchlab.squeaky.field.DatabaseField;
-import co.touchlab.squeaky.field.types.BaseTypeTestHide;
-import co.touchlab.squeaky.stmt.query.Queryable;
-import co.touchlab.squeaky.table.DatabaseTable;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import co.touchlab.doppl.testing.DopplContextDelegateTestRunner;
+import co.touchlab.doppl.testing.DopplTest;
+import co.touchlab.squeaky.dao.Dao;
+import co.touchlab.squeaky.field.DataType;
+import co.touchlab.squeaky.field.DatabaseField;
+import co.touchlab.squeaky.field.types.BaseTypeTestHide;
+import co.touchlab.squeaky.stmt.query.Queryable;
+import co.touchlab.squeaky.table.DatabaseTable;
+
 /**
  * Created by kgalligan on 5/11/16.
  */
-@DoppelTest
-@RunWith(DoppelRobolectricTestRunner.class)
+@DopplTest
+@RunWith(DopplContextDelegateTestRunner.class)
 public class QueryTest extends BaseTypeTestHide
 {
     private static final String DATE_COLUMN = "date";
