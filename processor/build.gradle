@@ -4,17 +4,14 @@ apply plugin: 'maven-publish'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-def dopplCoreVersion = '0.7.1'
-
 dependencies {
-    compile project(':core')
+    compile "$project.group:squeaky-core:$project.ext.javaVersion"
     compile 'com.squareup:javapoet:1.7.0'
     compile 'org.apache.commons:commons-lang3:3.4'
-    compile "co.doppl.lib:androidbase:$dopplCoreVersion"
+    compile "co.doppl.lib:androidbase:$project.ext.javaCoreVersion"
 }
 
-group = 'co.touchlab.squeaky'
-version = '0.5.0'
+version = ext.javaVersion
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
@@ -40,7 +37,6 @@ publishing {
     }
 }
 
-ext.bintrayGitUrl = 'https://github.com/doppllib/Squeaky-doppl.git'
-ext.bintrayName = 'squeaky-processor'
+ext.artifactId = 'squeaky-processor'
 
 apply from: "$dopplSharedScriptHome/bintray.gradle"

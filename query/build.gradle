@@ -5,21 +5,14 @@ apply plugin: 'maven-publish'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-def dopplCoreVersion = '0.7.1'
-
 dependencies {
-    compile project(':core')
-    doppl project(':core')
-    doppl "co.doppl.lib:androidbase:$dopplCoreVersion:doppl"
-    provided "co.doppl.lib:androidbase:$dopplCoreVersion"
+    compile "$project.group:squeaky-core:$project.ext.javaVersion"
+    doppl "$project.group:squeaky-core:$version"
+    doppl "co.doppl.lib:androidbase:$project.ext.dopplCoreVersion"
+    compileOnly "co.doppl.lib:androidbase:$project.ext.javaCoreVersion"
 }
 
-group = 'co.touchlab.squeaky'
-version = '0.5.0.0'
-
-ext.bintrayGitUrl = 'https://github.com/doppllib/Squeaky-doppl.git'
 ext.artifactId = 'squeaky-query'
-ext.bintrayName = 'squeaky-query'
 
 apply from: "$dopplSharedScriptHome/doppllibpublish.gradle"
 apply from: "$dopplSharedScriptHome/bintray.gradle"
