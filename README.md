@@ -7,12 +7,16 @@ It is fast, though.
 
 Currently releasing for Doppl because we have some code that still uses this.
 
-```compile 'co.touchlab.squeaky:squeaky-core:0.5.2'
+```
+compile 'co.touchlab.squeaky:squeaky-core:0.5.2'
 doppl 'co.touchlab.squeaky:squeaky-core:0.5.2.0'
 
-testApt 'co.touchlab.squeaky:squeaky-processor:0.5.2'```
+testApt 'co.touchlab.squeaky:squeaky-processor:0.5.2'
+```
 
 To use the query part of the project, you'll also need:
 
-```compile 'co.touchlab.squeaky:squeaky-query:0.5.2'
-doppl 'co.touchlab.squeaky:squeaky-query:0.5.2.0'```
+```
+compile 'co.touchlab.squeaky:squeaky-query:0.5.2'
+doppl 'co.touchlab.squeaky:squeaky-query:0.5.2.0'
+```
