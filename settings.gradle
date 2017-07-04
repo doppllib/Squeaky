@@ -1,1 +1,1 @@
-include ':core', ':query', ':processor'//, ':tests'
+include ':core', ':query', ':processor', ':tests'

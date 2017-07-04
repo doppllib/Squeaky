@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'net.ltgt.apt'
-apply plugin: 'co.touchlab.doppl.gradle'
+apply plugin: 'co.doppl.gradle'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -8,22 +8,19 @@ targetCompatibility = 1.7
 dependencies {
     compile 'junit:junit:4.11'
 
-    compile project(':core')
-    doppl project(':core')
+    compile "$project.group:squeaky-query:$project.ext.javaVersion"
+    doppl "$project.group:squeaky-query:$version"
 
-    compile project(':query')
-    doppl project(':query')
+    compile "org.apache.commons:commons-lang3:3.5"
+    doppl "co.doppl.org.apache.commons:commons-lang3:3.5.0"
 
-    compile "org.apache.commons:commons-lang3:$baseCommonsLangVersion"
-    doppl "org.apache.commons:commons-lang3:$dopplCommonsLangVersion:doppl"
+    testApt "co.touchlab.squeaky:squeaky-processor:$project.ext.javaVersion"
 
-    testApt "co.touchlab.squeaky:squeaky-processor:$baseSqueakyVersion"
+    doppl "co.doppl.lib:androidbase:$project.ext.dopplCoreVersion"
+    compileOnly "co.doppl.lib:androidbase:$project.ext.javaCoreVersion"
 
-    doppl "co.touchlab.doppl:androidbase:$dopplCoreVersion:doppl"
-    provided "co.touchlab.doppl:androidbase:$dopplCoreVersion"
-
-    testDoppl "co.touchlab.doppl:androidbasetest:$dopplCoreVersion:doppl"
-    testCompile "co.touchlab.doppl:androidbasetest:$dopplCoreVersion"
+    testDoppl "co.doppl.lib:androidbasetest:$project.ext.dopplCoreVersion"
+    testCompile "co.doppl.lib:androidbasetest:$project.ext.javaCoreVersion"
 }
 
 test{

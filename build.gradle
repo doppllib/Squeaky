@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9'
-        classpath 'co.doppl:gradle:0.8.2'
+        classpath 'co.doppl:gradle:0.8.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
@@ -23,9 +23,9 @@ allprojects {
 
 subprojects{
     group = 'co.touchlab.squeaky'
-    version = '0.5.2.0'
-    ext.javaVersion = '0.5.2'
-    ext.bintrayGitUrl = 'https://github.com/doppllib/Squeaky-doppl.git'
-    ext.javaCoreVersion = '0.7.5'
-    ext.dopplCoreVersion = '0.7.5.0'
+    version = '0.5.3.0'
+    ext.javaVersion = '0.5.3'
+    ext.bintrayGitUrl = 'https://github.com/doppllib/Squeaky.git'
+    ext.javaCoreVersion = '0.8.0'
+    ext.dopplCoreVersion = '0.8.0.0'
 }
